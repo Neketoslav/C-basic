@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class BadBonus : InteractiveObject, IRotation
+namespace rollAball
 {
-    private float _speedRotation = 20.0f;
-
-    protected override void Interaction()
+    public class BadBonus : InteractiveObject, IRotation
     {
-        base.Interaction();
-        Debug.Log("deboost");
-        InteractiveObject._debuff = true;
-    }
+        private float _speedRotation = 20.0f;
+        public delegate void TestDelegate();
+        private event TestDelegate BadShake;
 
+        protected override void Interaction()
+        {
+            base.Interaction();
+            Debug.Log("deboost");
+            InteractiveObject._debuff = true;
+            EventShake EventShake1 = new EventShake();
+            BadShake += EventShake1.AnimShake;
+            BadShake();
+        }
 
-    public void Rotation()
-    {
-        transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
+        public void Rotation()
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
+        }
     }
 }

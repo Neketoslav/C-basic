@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameController : MonoBehaviour
+namespace rollAball
 {
-
-    private InteractiveObject[] _interactiveObjects;
-
-    private void Awake()
+    public class GameController : MonoBehaviour
     {
-         _interactiveObjects = FindObjectsOfType<InteractiveObject>();
-    }
 
-    private void Update()
-    {
-        for (var i = 0; i < _interactiveObjects.Length; i++)
+        private InteractiveObject[] _interactiveObjects;
+
+        private void Awake()
         {
-            var interactiveObject = _interactiveObjects[i];
+            _interactiveObjects = FindObjectsOfType<InteractiveObject>();
+        }
 
-            if (interactiveObject == null)
+        private void Update()
+        {
+            for (var i = 0; i < _interactiveObjects.Length; i++)
             {
-                continue;
-            }
-            if (interactiveObject is IRotation rotation)
-            {
-                rotation.Rotation();
+                var interactiveObject = _interactiveObjects[i];
+
+                if (interactiveObject == null)
+                {
+                    continue;
+                }
+                if (interactiveObject is IRotation rotation)
+                {
+                    rotation.Rotation();
+                }
             }
         }
     }

@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Points : InteractiveObject, IRotation
+namespace rollAball
 {
-    private float _speedRotation = 10.0f;
-
-    protected override void Interaction()
+    public class Points : InteractiveObject, IRotation
     {
-        base.Interaction();
-       // DisplayWin.Point();
-    }
+        private float _speedRotation = 10.0f;
+        private int score = 0;
 
-    public void Rotation()
-    {
-        transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
+
+        protected override void Interaction()
+        {
+            base.Interaction();
+        }
+
+        public void Rotation()
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
+        }
     }
 }

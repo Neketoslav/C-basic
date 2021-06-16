@@ -1920,6 +1920,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2004,6 +2005,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bd683db8ea2974584b3eff474eb9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &963194230
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4693dce7a0091df428509b2fe5000632, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &980604742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388fb8a89c2b1b54fa3f9ec529aeac6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactiveObjects: []
 --- !u!1001 &1151909579
 PrefabInstance:
   m_ObjectHideFlags: 0

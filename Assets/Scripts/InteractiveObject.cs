@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class InteractiveObject : GameController
+namespace rollAball
 {
-
-    public static bool _buff = false;
-    public static bool _debuff = false;
-    protected virtual void Interaction()
+    public class InteractiveObject : GameController
     {
-        Debug.Log("pick up boost");
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
+        public static bool _buff = false;
+        public static bool _debuff = false;
+        protected virtual void Interaction()
         {
-            return;
+            Debug.Log("pick up boost");
         }
-        Interaction();
-        Destroy(gameObject);
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player"))
+            {
+                return;
+            }
+            Interaction();
+            Destroy(gameObject);
+        }
     }
 }
