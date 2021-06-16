@@ -1,19 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Points : InteractiveObject, IRotation
+namespace RollABall
 {
-    private float _speedRotation = 10.0f;
-
-    protected override void Interaction()
+    public class Points : InteractiveObject, IRotation, IExecute
     {
-        base.Interaction();
-       // DisplayWin.Point();
-    }
+        private float _speedRotation = 10.0f;
+        public event Action<int> OnPointChange = delegate (int i) { };
 
-    public void Rotation()
-    {
-        transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
+        protected override void Interaction()
+        {
+            OnPointChange.Invoke(1);
+        }
+        public override void Execute()
+        {
+            Rotation();
+        }
+        public void Rotation()
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
+        }
     }
 }

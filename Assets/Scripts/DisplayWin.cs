@@ -4,28 +4,20 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DisplayWin    
+namespace RollABall
 {
-    internal static int _point = 0;
-    private static TMP_Text _score;
+    public sealed class DisplayWin
+    {
+        private Text _text;
 
-    private void Awake()
-    {
-        _score = Object.FindObjectOfType<TMP_Text>();
-        _score.text = "Score: " + _point.ToString();
-    }
-    public static void Point()
-    {
-        _point += 1;
-        _score.text = "Score: " + _point.ToString();
-        if (_point == 3)
+        public DisplayWin()
         {
-            DisplayWin.Score();
+            _text = Object.FindObjectOfType<Text>();
+        }
+        
+        public void Display(int value)
+        {
+            _text.text = $"Вы набрали {value}";
         }
     }
-    public static void Score()
-    {
-          Debug.Log("win");
-    }
-
 }

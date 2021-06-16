@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace RollABall
 {
-    interface IRotation
+    public interface IDisposable
     {
-        void Rotation();
+        void Disposable();
     }
 }

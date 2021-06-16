@@ -2,23 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveObject : GameController
+namespace RollABall
 {
-
-    public static bool _buff = false;
-    public static bool _debuff = false;
-    protected virtual void Interaction()
+    public abstract class InteractiveObject : GameController, IExecute
     {
-        Debug.Log("pick up boost");
-    }
+        public static bool _buff = false;
+        public static bool _debuff = false;
+        
+        private bool _isInteractable;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
+        protected bool isInteractable
         {
-            return;
+            get { return _isInteractable; }
+            private set
+            {
+                _isInteractable = value;
+                GetComponent<Renderer>().enabled = _isInteractable;
+                GetComponent<Collider>().enabled = _isInteractable;
+            }
         }
-        Interaction();
-        Destroy(gameObject);
+
+        public abstract void Execute();
+        protected abstract void Interaction();
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player"))
+            {
+                return;
+            }
+            Interaction();
+            isInteractable = false;
+        }
+
     }
 }

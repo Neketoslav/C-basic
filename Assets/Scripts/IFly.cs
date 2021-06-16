@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IFly
+namespace RollABall
 {
-    void Fly();
+    public interface IFly
+    {
+        void Fly();
+    }
 }

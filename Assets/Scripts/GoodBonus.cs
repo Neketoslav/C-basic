@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class GoodBonus : InteractiveObject, IRotation
+namespace RollABall
 {
-    private float _speedRotation = 10.0f;
-
-    protected override void Interaction()
+    public sealed class GoodBonus : InteractiveObject, IRotation, IExecute
     {
-        base.Interaction();
-        Debug.Log("boost");
-        InteractiveObject._buff = true;
-    }
+        private float _speedRotation = 10.0f;
 
-    void IRotation.Rotation()
-    {
-        transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
-    }
+        protected override void Interaction()
+        {
+            Debug.Log("boost");
+            InteractiveObject._buff = true;
+        }
 
-    //public delegate void SpeedBonus();
-    //public SpeedBonus SpeedBuffPlayer;
+        public override void Execute()
+        {          
+            Rotation();
+        }
+
+        public void Rotation()
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation));
+        }
+
+    }
 }

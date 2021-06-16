@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buffs : Player
+namespace RollABall
 {
+    public class Buffs : Player
+    {
         public static float _buffSpeed = 1f;
         public void SpeedBoost()
         {
@@ -22,7 +24,7 @@ public class Buffs : Player
             _buffSpeed = 1f;
             Debug.Log("boost is over");
         }
-        IEnumerator  Deboost()
+        IEnumerator Deboost()
         {
             yield return new WaitForSeconds(0.0f);
             _buffSpeed = 0.5f;
@@ -32,4 +34,5 @@ public class Buffs : Player
             _buffSpeed = 1f;
             Debug.Log("deboost is over");
         }
+    }
 }
